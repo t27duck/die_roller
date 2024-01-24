@@ -1,8 +1,12 @@
 module DieRoll
   VERSION: String
-  # See the writing guide of rbs: https://github.com/ruby/rbs#guides
+  MINIMUM_DIE_SIZE: Integer
+  DICE_SYNTAX_REGEX: Regexp
 
-  class Error < StandardError
+  class ParseError < StandardError
+  end
+
+  class DieSizeError < StandardError
   end
 
   class Roll
@@ -14,11 +18,11 @@ module DieRoll
   end
 
   class Parser
-    D_SYNTAX_REGEX: Regexp
-
     attr_reader tokens: Array[String]
 
     def initialize: (String) -> void
+
+    private
     def generate_tokens: (String) -> void
     def validate_tokens: -> void
   end

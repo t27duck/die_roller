@@ -5,11 +5,12 @@ require_relative "die_roll/version"
 # A simple parser to roll one or more dice.
 #   DieRoll.roll("input")
 #
-#   Example inputs:
+#   Example valid inputs:
 #     "1d6"
 #     "d6" # Defaults to 1 die
 #     "2d8" # 2 8-sided dice
 #     "1d6 2d4" # 1 6-sided die and 2 4-sided dice
+#     "2D100"
 #
 #   Multiple dice can be separated with whitespace and/or `+`'s
 #     "1d6 1d8" is the same as...
@@ -18,7 +19,11 @@ require_relative "die_roll/version"
 #
 #   `.roll` returns a `DieRoll::Result` object with info regarding the roll(s).
 module DieRoll
-  class Error < StandardError; end
+  DICE_SYNTAX_REGEX = /\A\d*d\d+\z/
+  MINIMUM_DIE_SIZE = 4
+
+  class ParseError < StandardError; end
+  class DieSizeError < StandardError; end
 
   def self.roll(input)
     parser = Parser.new(input)
@@ -32,6 +37,9 @@ module DieRoll
       parser.tokens.map do |token|
         numbers = token.split("d")
         sides = numbers[0].to_i
+
+        raise DieSizeError, "Die size too small for '#{token}'" unless sides < MINIMUM_DIE_SIZE
+
         die_count = numbers[1].to_i
         die_count = 1 if die_count.zero?
         Roll.new(sides: sides, values: Array.new(die_count) { rand(sides) + 1 })
@@ -69,8 +77,6 @@ module DieRoll
 
   # Accpets a string input, and parses it for die tokens.
   class Parser
-    D_SYNTAX_REGEX = /\A\d*d\d+\z/
-
     attr_reader :tokens
 
     def initialize(input)
@@ -81,13 +87,18 @@ module DieRoll
     private
 
     def generate_tokens(input)
-      @tokens = input.split.map { |t| t.to_s.split("+") }.flatten
+      @tokens = input.split.map { |t| t.to_s.split("+") }.flatten.map(&:downcase)
     end
 
     def validate_tokens
       @tokens.each do |token|
-        raise Error, "Invalid input '#{token}'" unless token.match?(D_SYNTAX_REGEX)
+        raise ParseError, "Invalid input '#{token}'" unless token.match?(DICE_SYNTAX_REGEX)
       end
     end
   end
+
+  private_constant :Parser
+  private_constant :Result
+  private_constant :Roll
+  private_constant :Roller
 end
