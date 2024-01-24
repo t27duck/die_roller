@@ -30,7 +30,9 @@ module DieRoll
   class Roller
     def self.roll(parser)
       parser.tokens.map do |token|
-        die_count, sides = token.split("d").map(&:to_i)
+        numbers = token.split("d")
+        sides = numbers[0].to_i
+        die_count = numbers[1].to_i
         die_count = 1 if die_count.zero?
         Roll.new(sides: sides, values: Array.new(die_count) { rand(sides) + 1 })
       end
@@ -79,7 +81,7 @@ module DieRoll
     private
 
     def generate_tokens(input)
-      @tokens = input.split.map! { |token| token.split("+") }.flatten!
+      @tokens = input.split.map { |t| t.to_s.split("+") }.flatten
     end
 
     def validate_tokens

@@ -1,4 +1,36 @@
 module DieRoll
   VERSION: String
   # See the writing guide of rbs: https://github.com/ruby/rbs#guides
+
+  class Error < StandardError
+  end
+
+  class Roll
+    attr_reader sides: Array[String]
+    attr_reader values: Array[Integer]
+
+    def initialize: (sides: Integer, values: Array[Integer]) -> void
+    def total: -> Integer
+  end
+
+  class Parser
+    D_SYNTAX_REGEX: Regexp
+
+    attr_reader tokens: Array[String]
+
+    def initialize: (String) -> void
+    def generate_tokens: (String) -> void
+    def validate_tokens: -> void
+  end
+
+  class Roller
+    def self.roll: (Parser parser) -> Array[Roll]
+  end
+
+  class Result
+    attr_reader tokens: Array[String]
+
+    def initialize: (rolls: Array[Roll], tokens: Array[String]) -> void
+    def total: -> Integer
+  end
 end
