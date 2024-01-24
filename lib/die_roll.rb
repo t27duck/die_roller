@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 require_relative "die_roll/version"
+require_relative "die_roll/parser"
+require_relative "die_roll/result"
+require_relative "die_roll/roll"
+require_relative "die_roll/roller"
 
 # A simple parser to roll one or more dice.
 #   DieRoll.roll("input")
@@ -30,75 +34,4 @@ module DieRoll
     rolls = Roller.roll(parser)
     Result.new(rolls: rolls, tokens: parser.tokens)
   end
-
-  # Responsible for rolling dice given `tokens` from a `DieRoll::Parser`.
-  class Roller
-    def self.roll(parser)
-      parser.tokens.map do |token|
-        numbers = token.split("d")
-        sides = numbers[1].to_i
-
-        raise DieSizeError, "Die size too small for '#{token}'" if sides < MINIMUM_DIE_SIZE
-
-        die_count = numbers[0].to_i
-        die_count = 1 if die_count.zero?
-        Roll.new(sides: sides, values: Array.new(die_count) { rand(sides) + 1 })
-      end
-    end
-  end
-
-  # Holds the final result of rolls.
-  class Result
-    attr_reader :tokens, :rolls
-
-    def initialize(rolls:, tokens:)
-      @rolls = rolls
-      @tokens = tokens
-    end
-
-    def total
-      @rolls.sum(&:total)
-    end
-  end
-
-  # The result of a single die roll.
-  class Roll
-    attr_reader :sides, :values
-
-    def initialize(sides:, values:)
-      @sides = sides
-      @values = values
-    end
-
-    def total
-      values.sum
-    end
-  end
-
-  # Accpets a string input, and parses it for die tokens.
-  class Parser
-    attr_reader :tokens
-
-    def initialize(input)
-      generate_tokens(input)
-      validate_tokens
-    end
-
-    private
-
-    def generate_tokens(input)
-      @tokens = input.split.map { |t| t.to_s.split("+") }.flatten.reject { |t| t == "" || t.nil? }.map(&:downcase)
-    end
-
-    def validate_tokens
-      @tokens.each do |token|
-        raise ParseError, "Invalid input '#{token}'" unless token.match?(DICE_SYNTAX_REGEX)
-      end
-    end
-  end
-
-  private_constant :Parser
-  private_constant :Result
-  private_constant :Roll
-  private_constant :Roller
 end
