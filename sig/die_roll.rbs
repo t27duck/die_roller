@@ -33,6 +33,7 @@ module DieRoll
 
   class Result
     attr_reader tokens: Array[String]
+    attr_reader rolls: Array[Roll]
 
     def initialize: (rolls: Array[Roll], tokens: Array[String]) -> void
     def total: -> Integer
