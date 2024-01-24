@@ -7,7 +7,7 @@ class TestDieRoll < Minitest::Test
     refute_nil ::DieRoll::VERSION
   end
 
-  def test_it_does_something_useful
-    assert false
+  def test_roll_processes_a_die
+    assert_includes (1..6), DieRoll.roll("1d6").total
   end
 end
