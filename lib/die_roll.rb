@@ -16,10 +16,8 @@ require_relative "die_roll/roller"
 #     "1d6 2d4" # 1 6-sided die and 2 4-sided dice
 #     "2D100"
 #
-#   Multiple dice can be separated with whitespace and/or `+`'s
-#     "1d6 1d8" is the same as...
-#     "1d6 + 1d8" is the same as...
-#     "1d6+1d8"
+#   Multiple dice can be separated with whitespace:
+#     "1d6 1d8"
 #
 #   `.roll` returns a `DieRoll::Result` object with info regarding the roll(s).
 module DieRoll

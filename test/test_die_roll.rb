@@ -20,11 +20,8 @@ class TestDieRoll < Minitest::Test
   end
 
   def test_roll_processes_multiple_dice
-    assert_includes (1..10), DieRoll.roll("1d6 + 1d4").total
     assert_includes (1..10), DieRoll.roll("1d6 1d4").total
-    assert_includes (1..10), DieRoll.roll("1d6+1d4").total
-    assert_includes (1..10), DieRoll.roll("1d6+1d4").total
-    assert_includes (1..10), DieRoll.roll(" 1d6  +1d4").total
+    assert_includes (1..10), DieRoll.roll(" 1d6  1d4 ").total
   end
 
   def test_roll_raises_on_too_small_a_die
@@ -40,5 +37,7 @@ class TestDieRoll < Minitest::Test
     assert_raises(DieRoll::ParseError) { DieRoll.roll("abcd") }
     assert_raises(DieRoll::ParseError) { DieRoll.roll("2d6 7d-9") }
     assert_raises(DieRoll::ParseError) { DieRoll.roll("323dx3") }
+    assert_raises(DieRoll::ParseError) { DieRoll.roll("2d6+2d8") }
+    assert_raises(DieRoll::ParseError) { DieRoll.roll("2d6 + 2d8") }
   end
 end

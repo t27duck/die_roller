@@ -13,7 +13,7 @@ module DieRoll
     private
 
     def generate_tokens(input)
-      @tokens = input.split.map { |t| t.to_s.split("+") }.flatten.reject { |t| t == "" || t.nil? }.map(&:downcase)
+      @tokens = input.split.reject { |t| t == "" || t.nil? }.map(&:downcase)
     end
 
     def validate_tokens
