@@ -48,6 +48,13 @@ At least 4 sides must be declared per die, else `DieRoller::DieSizeError` is rai
 =>  Die size too small for '3d3' (DieRoller::DieSizeError)
 ```
 
+`.roll` returns a `DieRoller::Result` object with the following methods:
+
+- `#values` - An array of the result of each individual die rolled.
+- `#dice` - An array of strings for each die rolled (example: `["d6", "d6", "d4"]`).
+- `#total` - The sumation of all dice rolled.
+- `#pairs` - A 2D array of the die name and value for each die rolled (example: `[["d6", 4], ["d8", 7]]`).
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bundle exec rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
