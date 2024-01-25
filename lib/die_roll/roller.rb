@@ -12,8 +12,8 @@ module DieRoll
 
         die_count = numbers[0].to_i
         die_count = 1 if die_count.zero?
-        Roll.new(sides: sides, values: Array.new(die_count) { rand(sides) + 1 })
-      end
+        Array.new(die_count) { Roll.new(sides: sides, value: rand(sides) + 1) }
+      end.flatten
     end
   end
 

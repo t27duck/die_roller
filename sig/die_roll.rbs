@@ -11,9 +11,10 @@ module DieRoll
 
   class Roll
     attr_reader sides: Array[String]
-    attr_reader values: Array[Integer]
+    attr_reader value: Integer
 
-    def initialize: (sides: Integer, values: Array[Integer]) -> void
+    def initialize: (sides: Integer, value: Integer) -> void
+    def die: -> String
     def total: -> Integer
   end
 
@@ -36,6 +37,9 @@ module DieRoll
     attr_reader rolls: Array[Roll]
 
     def initialize: (rolls: Array[Roll], tokens: Array[String]) -> void
+    def pairs: -> Array[[String, (Integer | nil)]]
+    def dice: -> Array[String]
+    def values: -> Array[Integer]
     def total: -> Integer
   end
 end

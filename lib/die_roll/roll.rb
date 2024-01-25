@@ -3,15 +3,15 @@
 module DieRoll
   # The result of a single die roll.
   class Roll
-    attr_reader :sides, :values
+    attr_reader :sides, :value
 
-    def initialize(sides:, values:)
+    def initialize(sides:, value:)
       @sides = sides
-      @values = values
+      @value = value
     end
 
-    def total
-      values.sum
+    def die
+      "d#{sides}"
     end
   end
 

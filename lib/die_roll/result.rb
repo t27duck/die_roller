@@ -10,8 +10,20 @@ module DieRoll
       @tokens = tokens
     end
 
+    def pairs
+      @pairs ||= dice.zip(values).map(&:freeze).freeze
+    end
+
+    def values
+      @values ||= @rolls.map(&:value).freeze
+    end
+
+    def dice
+      @dice ||= @rolls.map(&:die).freeze
+    end
+
     def total
-      @rolls.sum(&:total)
+      @total ||= @rolls.sum(&:value)
     end
   end
 
