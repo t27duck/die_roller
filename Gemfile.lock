@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    die_roll (0.1.0)
+    die_roller (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -99,7 +99,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  die_roll!
+  die_roller!
   minitest (~> 5.16)
   rake (~> 13.0)
   rbs (>= 3.2.1)

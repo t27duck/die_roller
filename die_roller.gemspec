@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-require_relative "lib/die_roll/version"
+require_relative "lib/die_roller/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "die_roll"
-  spec.version = DieRoll::VERSION
+  spec.name = "die_roller"
+  spec.version = DieRoller::VERSION
   spec.authors = ["Tony Drake"]
   spec.email = ["t27duck@gmail.com"]
 
   spec.summary = "A simple dice notation parser and roller."
   spec.description = "A simple dice notation parser and roller."
-  spec.homepage = "https://github.com/t27duck/die_roll"
+  spec.homepage = "https://github.com/t27duck/die_roller"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.0"
 

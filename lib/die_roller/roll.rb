@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module DieRoll
+module DieRoller
   # The result of a single die roll.
   class Roll
     attr_reader :sides, :value

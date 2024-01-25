@@ -1,4 +1,4 @@
-module DieRoll
+module DieRoller
   VERSION: String
   MINIMUM_DIE_SIZE: Integer
   DICE_SYNTAX_REGEX: Regexp

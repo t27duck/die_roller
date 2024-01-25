@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module DieRoll
+module DieRoller
   # Holds the final result of rolls.
   class Result
     attr_reader :tokens, :rolls

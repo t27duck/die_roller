@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module DieRoll
+module DieRoller
   # Accpets a string input, and parses it for die tokens.
   class Parser
     attr_reader :tokens

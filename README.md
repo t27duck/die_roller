@@ -1,6 +1,6 @@
-# DieRoll
+# DieRoller
 
-`DieRoll` is a simple dice notation parser and roller written in pure Ruby.
+`DieRoller` is a simple dice notation parser and roller written in pure Ruby.
 
 The gem supports the basic `AdX` dice roll notation (ie "2d6" meaning "2 6-sided dice").
 
@@ -10,42 +10,42 @@ TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_O
 
 Install the gem and add to the application's Gemfile by executing:
 
-    $ bundle add die_roll
+    $ bundle add die_roller
 
 If bundler is not being used to manage dependencies, install the gem by executing:
 
-    $ gem install die_roll
+    $ gem install die_roller
 
 ## Usage
 
-The main interface is through `DieRoll.roll` which takes a string containing only dice notation. Multiple dice may be defined deliminated by whitespace.
+The main interface is through `DieRoller.roll` which takes a string containing only dice notation. Multiple dice may be defined deliminated by whitespace.
 
 Examples:
 
 ```ruby
-DieRoll.roll("2d8")
-DieRoll.roll("2d8 4d6")
-DieRoll.roll(" 2d4  3d8")
+DieRoller.roll("2d8")
+DieRoller.roll("2d8 4d6")
+DieRoller.roll(" 2d4  3d8")
 ```
 
 If no number of dice are given, 1 is assumed:
 
 ```ruby
-DieRoll.roll("d6") # Same as entering "1d6"
+DieRoller.roll("d6") # Same as entering "1d6"
 ```
 
-If parsing the string fails, `DieRoll::ParseError` will be raised:
+If parsing the string fails, `DieRoller::ParseError` will be raised:
 
 ```sh
-> DieRoll.roll("1d6 badinput")
-=> Invalid input 'badinput' (DieRoll::ParseError)
+> DieRoller.roll("1d6 badinput")
+=> Invalid input 'badinput' (DieRoller::ParseError)
 ```
 
-At least 4 sides must be declared per die, else `DieRoll::DieSizeError` is raised:
+At least 4 sides must be declared per die, else `DieRoller::DieSizeError` is raised:
 
 ```sh
-> DieRoll.roll("3d3 1d6")
-=>  Die size too small for '3d3' (DieRoll::DieSizeError)
+> DieRoller.roll("3d3 1d6")
+=>  Die size too small for '3d3' (DieRoller::DieSizeError)
 ```
 
 ## Development
@@ -56,7 +56,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/t27duck/die_roll.
+Bug reports and pull requests are welcome on GitHub at https://github.com/t27duck/die_roller.
 
 Pull requests will only be accepted if they meet all the following criteria (ran by CI):
 
@@ -72,7 +72,7 @@ $ bundle exec rake test
 $ bundle exec rake rubocop
 ```
 
-3. RBS type signatures (in `sig/die_roll.rbs`). This can be verified with:
+3. RBS type signatures (in `sig/die_roller.rbs`). This can be verified with:
 
 ```
 $ bundle exec rake steep

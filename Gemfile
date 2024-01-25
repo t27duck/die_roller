@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in die_roll.gemspec
+# Specify your gem's dependencies in die_roller.gemspec
 gemspec
 
 gem "rake", "~> 13.0"

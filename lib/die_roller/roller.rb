@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module DieRoll
-  # Responsible for rolling dice given `tokens` from a `DieRoll::Parser`.
+module DieRoller
+  # Responsible for rolling dice given `tokens` from a `DieRoller::Parser`.
   class Roller
     def self.roll(parser)
       parser.tokens.map do |token|

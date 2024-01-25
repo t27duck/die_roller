@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require_relative "die_roll/version"
-require_relative "die_roll/parser"
-require_relative "die_roll/result"
-require_relative "die_roll/roll"
-require_relative "die_roll/roller"
+require_relative "die_roller/version"
+require_relative "die_roller/parser"
+require_relative "die_roller/result"
+require_relative "die_roller/roll"
+require_relative "die_roller/roller"
 
 # A simple parser to roll one or more dice.
-#   DieRoll.roll("input")
+#   DieRoller.roll("input")
 #
 #   Example valid inputs:
 #     "1d6"
@@ -19,8 +19,8 @@ require_relative "die_roll/roller"
 #   Multiple dice can be separated with whitespace:
 #     "1d6 1d8"
 #
-#   `.roll` returns a `DieRoll::Result` object with info regarding the roll(s).
-module DieRoll
+#   `.roll` returns a `DieRoller::Result` object with info regarding the roll(s).
+module DieRoller
   DICE_SYNTAX_REGEX = /\A\d*d\d+\z/
   MINIMUM_DIE_SIZE = 4
 
