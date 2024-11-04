@@ -28,7 +28,7 @@ GEM
     fileutils (1.7.2)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
-    json (2.7.2)
+    json (2.7.5)
     language_server-protocol (3.17.0.3)
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -37,7 +37,7 @@ GEM
     minitest (5.25.1)
     mutex_m (0.2.0)
     parallel (1.26.3)
-    parser (3.3.5.0)
+    parser (3.3.5.1)
       ast (~> 2.4.1)
       racc
     racc (1.8.1)
@@ -49,7 +49,7 @@ GEM
     rbs (3.6.1)
       logger
     regexp_parser (2.9.2)
-    rubocop (1.67.0)
+    rubocop (1.68.0)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
@@ -59,7 +59,7 @@ GEM
       rubocop-ast (>= 1.32.2, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 3.0)
-    rubocop-ast (1.32.3)
+    rubocop-ast (1.33.1)
       parser (>= 3.3.1.0)
     rubocop-minitest (0.36.0)
       rubocop (>= 1.61, < 2.0)
@@ -99,7 +99,7 @@ DEPENDENCIES
   minitest (~> 5.25)
   rake (~> 13.2)
   rbs (>= 3.2.1)
-  rubocop (~> 1.67)
+  rubocop (~> 1.68)
   rubocop-minitest
   rubocop-rake
   steep (>= 1.5.3)
