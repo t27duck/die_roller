@@ -9,7 +9,7 @@ gem "rake", "~> 13.3"
 
 gem "minitest", "~> 5.25"
 
-gem "rubocop", "~> 1.78"
+gem "rubocop", "~> 1.79"
 gem "rubocop-minitest"
 gem "rubocop-rake"
 
