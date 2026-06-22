@@ -13,7 +13,7 @@ GEM
     ffi (1.17.4)
     ffi (1.17.4-x86_64-linux-gnu)
     fileutils (1.8.0)
-    json (2.19.7)
+    json (2.19.9)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
     listen (3.10.0)
@@ -40,7 +40,7 @@ GEM
       prism (>= 1.6.0)
       tsort
     regexp_parser (2.12.0)
-    rubocop (1.87.0)
+    rubocop (1.88.0)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -97,7 +97,7 @@ DEPENDENCIES
   minitest (~> 6.0)
   rake (~> 13.4)
   rbs (>= 3.2.1)
-  rubocop (~> 1.87)
+  rubocop (~> 1.88)
   rubocop-minitest
   rubocop-rake
   steep (>= 1.5.3)
