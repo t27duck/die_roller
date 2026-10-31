@@ -3,6 +3,8 @@ module DieRoller
   MINIMUM_DIE_SIZE: Integer
   DICE_SYNTAX_REGEX: Regexp
 
+  def self.roll: (String input) -> Result
+
   class ParseError < StandardError
   end
 
